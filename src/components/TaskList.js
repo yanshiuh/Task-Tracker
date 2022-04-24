@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import React, { useContext, useEffect } from "react";
 import { TaskContext } from "../Context/GlobalState";
 import { fetchTasks } from "./db";
@@ -8,16 +9,17 @@ function TaskList() {
   const [{ tasks }, dispatch] = useContext(TaskContext);
 
   useEffect(() => {
-    const getTask = async () => {
-      const taskFromServer = await fetchTasks();
-      dispatch({
-        type: "GET_TASK",
-        tasks: taskFromServer,
-      });
-    };
-
     getTask();
   }, []);
+
+  // FETCH data from JSON server
+  const getTask = async () => {
+    const taskFromServer = await fetchTasks();
+    dispatch({
+      type: "GET_TASK",
+      tasks: taskFromServer,
+    });
+  };
 
   return (
     <div>

@@ -3,6 +3,7 @@ import React, { useContext, useReducer } from "react";
 const initialState = {
   tasks: [],
   addTask: false,
+  users: [],
 };
 
 // Create Context

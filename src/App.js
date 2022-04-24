@@ -6,9 +6,11 @@ import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 import { TaskProvider, useStateValue } from "./Context/GlobalState";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
   const [{ addTask }, dispatch] = useStateValue();
+
   return (
     <Router>
       <div className="container">
